@@ -1,0 +1,50 @@
+[
+    {
+        "cardName": "PlanGarden",
+        "cardDescription": "Outline the layout and plant selections for the garden.",
+        "cardState": "TO_DO",
+        "taskHandler": "Alice"
+    },
+    {
+        "cardName": "BuySeeds",
+        "cardDescription": "Purchase a variety of seeds for the planned garden.",
+        "cardState": "TO_DO",
+        "taskHandler": "Bob"
+    },
+    {
+        "cardName": "PrepareSoil",
+        "cardDescription": "Till and enrich the soil in the garden area for optimal plant growth.",
+        "cardState": "IN_PROGRESS",
+        "taskHandler": "Eve"
+    },
+    {
+        "cardName": "PlantSeedlings",
+        "cardDescription": "Plant the seeds or seedlings in the prepared soil according to the plan.",
+        "cardState": "TO_DO",
+        "taskHandler": "Charlie"
+    },
+    {
+        "cardName": "InstallIrrigation",
+        "cardDescription": "Set up a suitable irrigation system to ensure proper watering for the plants.",
+        "cardState": "TO_DO",
+        "taskHandler": "David"
+    },
+    {
+        "cardName": "MonitorGrowth",
+        "cardDescription": "Regularly check the plants' growth, address any issues, and provide necessary care.",
+        "cardState": "TO_DO",
+        "taskHandler": "Fiona"
+    },
+	{
+		"cardName": "HarvestVegetables",
+		"cardDescription": "Carefully harvest the mature vegetables from the garden.",
+		"cardState": "DONE",
+		"taskHandler": "Grace"
+	},
+	{
+		"cardName": "BuildGardenFence",
+		"cardDescription": "Begin constructing a sturdy fence around the garden area to protect it from animals.",
+		"cardState": "IN_PROGRESS",
+		"taskHandler": "Oliver"
+	}
+]
