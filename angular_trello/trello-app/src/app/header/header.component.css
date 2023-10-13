@@ -1,0 +1,19 @@
+header {
+    background-color:royalblue;
+    border-bottom: 1px solid white;
+    color: aliceblue;
+    font-size: medium;
+    font-family: 'Times New Roman';
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+header h1 {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-right: auto;
+}
+header button {
+    margin-left: 10px;
+    margin-right: 10px;
+}

@@ -1,0 +1,13 @@
+.main-container {
+    display: flex;
+    height: 100%;
+}
+.menu {
+    flex: 1;
+    border-right: 1px solid white;
+    background-color:royalblue;
+}
+.column-board {
+    flex: 9;
+    background-color:aliceblue;
+}

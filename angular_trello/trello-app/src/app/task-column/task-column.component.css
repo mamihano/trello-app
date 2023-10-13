@@ -1,0 +1,76 @@
+.task-column {
+    height: 100%;
+    max-width: 400px;
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+}
+.column-header {
+    background-color: darkcyan;
+    height: 100px;
+    border-radius: 5px;
+}
+.task-column nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+}
+.task-column nav h2 {
+    color: white;
+    white-space: nowrap;
+    margin: 0;
+}
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+.create-card-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: whitesmoke;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+.form-container {
+    max-width: 400px;
+    min-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.dialog-title {
+    color: black;
+    padding-top: 10px;
+    text-align: center;
+}
+.button-container {
+    display: flex;
+}
+.submit_btn, .cancel_btn {
+      color: black;
+}
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
