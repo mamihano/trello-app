@@ -19,7 +19,7 @@ public class TaskColumn {
     @JoinColumn(name = "boardId")
     @JsonIgnore
     private Board board;
-    @OneToMany(mappedBy = "taskColumn", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "taskColumn", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Card> cards = new ArrayList<>();
 

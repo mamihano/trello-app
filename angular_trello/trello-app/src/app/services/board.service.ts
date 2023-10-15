@@ -12,7 +12,11 @@ export class BoardService {
   private apiServerUrl = environment.apiUrl + "/boards";
   constructor(private http: HttpClient) {}
 
-  public getBoards() : Observable<Board[]> {
+  getBoards() : Observable<Board[]> {
     return this.http.get<Board[]>(this.apiServerUrl);
   }
+  createBoard(board: Board): Observable<Board> {
+    return this.http.post<Board>(this.apiServerUrl, board);
+  }
+  
 }

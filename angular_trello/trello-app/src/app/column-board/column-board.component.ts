@@ -29,5 +29,9 @@ export class ColumnBoardComponent implements OnInit {
       }
     );
   }
+
+  onColumnDeleted(deletedColumn: TaskColumn): void {
+    this.taskColumns = this.taskColumns.filter(column => column.columnId !== deletedColumn.columnId);
+  }
 }
 

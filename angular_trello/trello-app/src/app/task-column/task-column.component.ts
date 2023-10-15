@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { CardComponent } from '../card/card.component';
 import { TaskColumn } from '../models/task-column';
@@ -9,6 +9,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { State } from '../enums/state';
 import { FormsModule } from '@angular/forms';
+import { TaskColumnService } from '../services/task-column.service';
 
 @Component({
   selector: 'app-task-column',
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class TaskColumnComponent implements OnInit {
   @Input() column: TaskColumn | undefined;
+  @Output() columnDeleted: EventEmitter<TaskColumn> = new EventEmitter<TaskColumn>();
   cards: Card[] = [];
   showCreateForm = false;
   taskName!: string;
@@ -27,7 +29,8 @@ export class TaskColumnComponent implements OnInit {
   cardState?: State;
 
   constructor(public dialog: MatDialog,
-  private cardService: CardService) {}
+  private cardService: CardService,
+  private columnService: TaskColumnService) {}
 
   ngOnInit(): void {
       this.getCards();
@@ -81,16 +84,25 @@ export class TaskColumnComponent implements OnInit {
     this.cards = this.cards.filter(card => card.cardId !== deletedCard.cardId);
   }
 
-  onCardEdited(editedCard: Card): void {
-    const editedCardIndex = this.cards.findIndex(card => card.cardId === editedCard.cardId);
-    if (editedCardIndex !== -1) {
-      this.cards[editedCardIndex] = editedCard;
-    } else {
-      console.error('Edited card not found in the cards array.');
-    }
+  onCardEdited(): void {
+    //TODO: refresh page to show card in correct column
+    this.getCards();
   }
 
-  deleteColumn(): void {
-    console.log("TODO");
+  deleteColumn(column: TaskColumn): void {
+    if (column.columnId) {
+      this.columnService.deleteColumn(column.columnId).subscribe(
+        (response: void) => {
+          this.columnDeleted.emit(column);
+          //TODO: Fix orphan delete
+          console.log('Column successfully deleted:', response);
+        },
+        (error) => {
+          console.error('Error deleting column:', error);
+        }
+      );
+    } else {
+      console.error('Column is undefined.');
+    }
   }
 }

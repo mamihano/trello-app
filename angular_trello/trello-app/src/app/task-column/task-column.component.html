@@ -8,30 +8,34 @@
             <div class="create-card-form" *ngIf="showCreateForm">
                 <h1 mat-dialog-title class="dialog-title">Create new task</h1>
                 <div mat-dialog-content class="form-container">
-                    <form>
+                    <form #createForm = 'ngForm' (submit)="createCard()">
                         <div class="form-group">
-                            <label for="inputField">Task name:</label><br>
-                            <input type="text" id="inputField" name="inputField" placeholder="Enter task column name" [(ngModel)]="taskName"><br>
+                            <label for="taskName">Task name:</label><br>
+                            <input type="text" id="inputField" name="taskName" placeholder="Enter task name" [(ngModel)]="taskName" required><br>
                         </div>
+                        <div class="alert" *ngIf="createForm.controls['taskName'].touched && createForm.controls['taskName'].invalid">Task name is required...</div>
                         <div class="form-group">
-                            <label for="card-description">Description:</label><br>
-                            <textarea name="card-description" id="card-description" cols="30" rows="10" class="card-description" [(ngModel)]="description"></textarea>
+                            <label for="description">Description:</label><br>
+                            <textarea name="description" id="card-description" cols="30" rows="10" class="card-description" [(ngModel)]="description" required></textarea>
                         </div>
+                        <div class="alert" *ngIf="createForm.controls['description'].touched && createForm.controls['description'].invalid">Task description is required...</div>
                         <div class="form-group">
-                            <label for="inputField">Task handler:</label><br>
-                            <input type="text" id="inputField" name="inputField" placeholder="Enter task handler" [(ngModel)]="taskHandler"><br>
-                        </div><br>
+                            <label for="taskHandler">Task handler:</label><br>
+                            <input type="text" id="inputField" name="taskHandler" placeholder="Enter task handler" [(ngModel)]="taskHandler" required><br>
+                        </div>
+                        <div class="alert" *ngIf="createForm.controls['taskHandler'].touched && createForm.controls['taskHandler'].invalid">Task handler is required...</div>
+                        <br>
                         <div class="form-buttons">
-                            <button mat-button class="submit_btn" (click)="createCard()">Submit</button>
+                            <button mat-button class="submit_btn" type="submit" [disabled]="createForm.invalid">Submit</button>
                             <button mat-button class="cancel_btn" (click)="cancelForm()">Cancel</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <button mat-button class="delete-column" (click)="deleteColumn()">Delete column</button>
+            <button mat-button class="delete-column" (click)="column && deleteColumn(column)">Delete column</button>
         </div>
     </div>
     <ng-container class="cards" *ngFor="let card of cards">
-        <app-card [card]="card" (cardDeleted)="onCardDeleted($event)" (cardEdited)="onCardEdited($event)"></app-card>
+        <app-card [card]="card" (cardDeleted)="onCardDeleted($event)" (cardEdited)="onCardEdited()"></app-card>
     </ng-container>
 </div>

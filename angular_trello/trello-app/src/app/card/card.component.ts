@@ -29,7 +29,21 @@ export class CardComponent {
   taskHandler!: string;
   cardState!: State;
 
-  constructor(private cardService: CardService) {}
+  constructor(private cardService: CardService) { }
+
+  fillInitialValues(card:Card){
+    this.taskName = card.cardName;
+    this.description = card.cardDescription;
+    this.taskHandler = card.taskHandler;
+    this.cardState = card.cardState;
+  }
+
+  toggleEditForm(card: Card): void {
+    this.showEditForm = !this.showEditForm;
+    if (this.showEditForm) {
+      this.fillInitialValues(card);
+    }
+  }
 
   cancelForm(): void {
     this.showEditForm = false;
@@ -43,8 +57,7 @@ export class CardComponent {
     card.cardState = this.cardState;
     this.cardService.editCard(card).subscribe(
       (response: Card) => {
-        this.cardEdited.emit(card);
-        //TODO refresh columns!
+        this.cardEdited.emit(response);
         console.log('Card updated successfully:', response);
       },
       (error) => {

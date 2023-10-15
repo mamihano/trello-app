@@ -19,11 +19,11 @@ export class CardService {
     return this.http.post<Card>(this.apiServerUrl, card);
   }
 
-  public deleteCard(cardId: number): Observable<void> {
+  deleteCard(cardId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/${cardId}`);
   }
 
-  public editCard(card: Card): Observable<Card> {
+  editCard(card: Card): Observable<Card> {
     return this.http.put<Card>(`${this.apiServerUrl}/${card.cardId}`, card);
   }
 }

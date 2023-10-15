@@ -1,7 +1,6 @@
 package com.test.trello.controller;
 
 import com.test.trello.enums.State;
-import com.test.trello.model.Board;
 import com.test.trello.model.Card;
 import com.test.trello.model.TaskColumn;
 import com.test.trello.service.TaskColumnService;
@@ -26,12 +25,6 @@ public class TaskColumnController {
     public ResponseEntity<List<TaskColumn>> getAllTaskColumns() {
         List<TaskColumn> taskColumns = taskColumnService.getAllTaskColumns();
         return new ResponseEntity<>(taskColumns, HttpStatus.OK);
-    }
-
-    @GetMapping("/{name}")
-    public ResponseEntity<TaskColumn> getTaskColumnByName(@PathVariable("name") String name) {
-        TaskColumn taskColumn = taskColumnService.getTaskColumnByName(name);
-        return new ResponseEntity<>(taskColumn, HttpStatus.OK);
     }
 
     @GetMapping("/{id}/cards")

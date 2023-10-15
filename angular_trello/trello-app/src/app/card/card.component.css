@@ -69,3 +69,6 @@ mat-card-actions {
   display: flex;
   justify-content: flex-end;
 }
+.alert {
+  color: tomato;
+}
